@@ -1,0 +1,65 @@
+<template>
+  <div>
+    <el-menu
+        :default-active="currentPath"
+        router
+        mode="horizontal"
+        background-color="white"
+        text-color="#222"
+        active-text-color="red"
+        style="min-width: 1300px">
+      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
+        {{ item.navItem }}
+      </el-menu-item>
+      <span style="position: absolute;padding-top: 20px;right: 50%;font-size: 20px;font-weight: bold">自动化数据分析平台 by 于海波 董泽伟 </span>
+      <el-input
+          placeholder="快速搜索..."
+          prefix-icon="el-icon-search"
+          size="medium"
+          style="width: 300px;position:absolute;margin-top: 12px;right: 5%"
+          v-model="keywords">
+      </el-input>
+    </el-menu>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'NavMenu',
+  data () {
+    return {
+      navList: [
+        {name: '/getEntity', navItem: '实体集'},
+        {name: '/getDataset', navItem: '训练集'},
+        {name: '/getModel', navItem: '模型集'},
+        {name: '/predict', navItem: '预测'}
+      ],
+      keywords: ''
+    }
+  },
+  computed: {
+    hoverBackground () {
+      return '#ffd04b'
+    },
+    currentPath () {
+      var x = this.$route.path.indexOf('/', 1)
+      if (x !== -1) {
+        return this.$route.path.substring(0, x)
+      } else {
+        return this.$route.path
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+a{
+  text-decoration: none;
+}
+
+span {
+  pointer-events: none;
+}
+
+</style>
