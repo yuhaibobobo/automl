@@ -30,9 +30,9 @@ export default {
     return {
       navList: [
         {name: '/getEntity', navItem: '实体集'},
-        {name: '/getDataset', navItem: '训练集'},
-        {name: '/getModel', navItem: '模型集'},
-        {name: '/predict', navItem: '预测'}
+        {name: '/createEntityset', navItem: '训练集'},
+
+
       ],
       keywords: ''
     }

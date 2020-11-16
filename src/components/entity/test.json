@@ -1,0 +1,21 @@
+{
+  "result": {
+    "entities": [
+      {
+        "entity": {
+          "name": "a"
+        }
+      },
+      {
+        "entity": {
+          "name": "b"
+        }
+      },
+      {
+        "entity": {
+          "name": "c"
+        }
+      }
+    ]
+  }
+}

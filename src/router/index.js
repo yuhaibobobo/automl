@@ -38,6 +38,21 @@ export default new Router({
                     path:'/predict',
                     name:'predict',
                     component: () => import('@/components/predict/Predict')
+                },
+                {
+                    path:'/createEntity',
+                    name:'createEntity',
+                    component: () => import('@/components/entity/CreateEntity')
+                },
+                {
+                    path:'/createEntityset',
+                    name:'createEntityset',
+                    component: () => import('@/components/model/CreateEntityset')
+                },
+                {
+                    path:'/selectModel',
+                    name:'selectModel',
+                    component: () => import('@/components/model/SelectModel')
                 }
             ]
         }

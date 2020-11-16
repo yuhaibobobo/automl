@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import {
+  Cascader,
   Pagination,
   Dialog,
   Menu,
@@ -51,13 +52,17 @@ import {
   TimelineItem,
   Link,
   Divider,
-  Image
+  Image,
+  Loading,
+  MessageBox,
+  Message,
+  Notification
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
 
-
+Vue.use(Cascader)
 Vue.use(Pagination)
 Vue.use(Dialog)
 Vue.use(Menu)
@@ -108,6 +113,23 @@ Vue.use(TimelineItem)
 Vue.use(Link)
 Vue.use(Divider)
 Vue.use(Image)
+Vue.use(Loading.directive)
+
+Vue.prototype.$loading = Loading.service
+Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$alert = MessageBox.alert
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$prompt = MessageBox.prompt
+Vue.prototype.$notify = Notification
+Vue.prototype.$message = Message
+
+var axios = require('axios')
+axios.defaults.baseURL = 'http://localhost:8443'
+// 使请求带上凭证信息
+axios.defaults.withCredentials = true
+
+Vue.prototype.$axios = axios
+Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
