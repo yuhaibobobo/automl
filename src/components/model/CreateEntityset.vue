@@ -144,7 +144,7 @@ export default {
   data(){
     return{
       name:'',
-      entities: [{name:"a",cols:[{name:"aa"}]},{name:"b",cols:[{name:"bb"}]}],
+      entities: [],
       select_entities:[],
       select_col1:[],
       select_col2:[],
@@ -158,6 +158,60 @@ export default {
       max_depth:''
     }
   },
+  mounted() {
+    this.entities = [{
+      name: "customers",
+      columns: [
+        {
+          name: "customer_id",     },
+        {
+          name: "zip_code",   },
+        {
+          name: "join_date",
+        },
+        {
+          name: "date_of_birth",
+        }
+      ]
+    },
+      { name: "sessions",
+        columns: [
+          {
+            name: "session_id",     },
+          {
+            name: "customer_id",     },
+          {
+            name: "device",   },
+          {
+            name: "session_start",
+          }
+        ]
+      },
+      { name: "transactions",
+        columns: [
+          {
+            name: "transaction_id",     },
+          {
+            name: "session_id",     },
+          {
+            name: "transaction_time",
+          },
+          {
+            name: "product_id",   },
+          {
+            name: "amount",     }
+        ]
+      },
+      { name: "products",
+        columns: [
+          {
+            name: "product_id",   },
+          {
+            name: "brand",   }
+        ]
+      }
+    ]
+  },
   methods:{
     compute_option(){
       let temp = [];
@@ -167,9 +221,9 @@ export default {
         single_option['value'] = entity.name
         single_option['label'] = entity.name
         let childen = [];
-        for(var j=0;j<entity.cols.length;j++){
+        for(var j=0;j<entity.columns.length;j++){
           let temp2 = {};
-          var col = entity.cols[j]
+          var col = entity.columns[j]
           temp2['value']=col.name
           temp2['label']=col.name
           childen.push(temp2)

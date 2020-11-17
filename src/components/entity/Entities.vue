@@ -2,10 +2,10 @@
   <div>
     <el-container>
       <el-row gutter='20'>
-        <el-col  :span='6' v-for="entity in entities" :key="entity.name" >
+        <el-col  :span='6' v-for="entity in entities" :key="entity" >
           <el-card>
             <div>
-              {{entity.name}}
+              {{entity}}
             </div>
           </el-card>
         </el-col>
@@ -32,7 +32,7 @@ export default {
       //   _this.entities = res.entities
       //   console.log(res)
       // })
-      this.entities = [{name:"a"},{name:"b"},{name:"C"}]
+      this.entities = ['customers','sessions','transactions','products']
 
     }
   }

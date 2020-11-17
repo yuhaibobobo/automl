@@ -25,21 +25,6 @@ export default new Router({
                     component: () => import('@/components/entity/GetEntity')
                 },
                 {
-                    path: '/getDataset',
-                    name: 'getDataset',
-                    component: () => import('@/components/dataset/GetDataset')
-                },
-                {
-                    path:'/getModel',
-                    name:'getModel',
-                    component: () => import('@/components/model/GetModel')
-                },
-                {
-                    path:'/predict',
-                    name:'predict',
-                    component: () => import('@/components/predict/Predict')
-                },
-                {
                     path:'/createEntity',
                     name:'createEntity',
                     component: () => import('@/components/entity/CreateEntity')

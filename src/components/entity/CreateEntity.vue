@@ -5,9 +5,9 @@
         <el-row>
           <el-col v-for="table in tables" :key="table.name">
             <el-card>
-              <div>
+              <el-row>
                 {{table.name}}
-              </div>
+              </el-row>
             </el-card>
           </el-col>
         </el-row>
@@ -39,7 +39,7 @@
           <el-col>
             <el-select v-model="index_col"  placeholder="请选择">
               <el-option
-              v-for="col in select_table.cols"
+              v-for="col in select_table.columns"
               :key="col.name"
               :label="col.name"
               :value="col.name">
@@ -56,7 +56,7 @@
           <el-col>
             <el-select v-model="time_index_col"  placeholder="请选择">
               <el-option
-                  v-for="col in select_table.cols"
+                  v-for="col in select_table.columns"
                   :key="col.name"
                   :label="col.name"
                   :value="col.name">
@@ -92,7 +92,92 @@ export default {
   },
   methods:{
     load_tables(){
-      this.tables = [{name:"a",cols:[{name:"aa"},{name:"cc"}]},{name:"b",cols:[{name:"bb"}]}]
+      this.tables =[{
+        name: "customers",
+        primary_key: "customer_id",
+        foreign_key: "",
+        columns: [
+          {
+            name: "customer_id",
+            type: "bigint"
+          },
+          {
+            name: "zip_code",
+            type: "text"
+          },
+          {
+            name: "join_date",
+            type: "datetime"
+          },
+          {
+            name: "date_of_birth",
+            type: "datetime"
+          }
+        ]
+      },
+        { name: "sessions",
+          primary_key: "session_id",
+          foreign_key: "",
+          columns: [
+            {
+              name: "session_id",
+              type: "bigint"
+            },
+            {
+              name: "customer_id",
+              type: "bigint"
+            },
+            {
+              name: "device",
+              type: "text"
+            },
+            {
+              name: "session_start",
+              type: "datetime"
+            }
+          ]
+        },
+        { name: "transactions",
+          primary_key: "transaction_id",
+          foreign_key: "",
+          columns: [
+            {
+              name: "transaction_id",
+              type: "bigint"
+            },
+            {
+              name: "session_id",
+              type: "bigint"
+            },
+            {
+              name: "transaction_time",
+              type: "datetime"
+            },
+            {
+              name: "product_id",
+              type: "text"
+            },
+            {
+              name: "amount",
+              type: "double"
+            }
+          ]
+        },
+        { name: "products",
+          primary_key: "product_id",
+          foreign_key: "",
+          columns: [
+            {
+              name: "product_id",
+              type: "text"
+            },
+            {
+              name: "brand",
+              type: "text"
+            }
+          ]
+        }
+      ]
     },
     create(){
       this.$router.push('/getEntity')
